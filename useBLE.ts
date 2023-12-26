@@ -12,8 +12,7 @@ interface BluetoothLowEnergyApi {
 }
 
 function useBLE(): BluetoothLowEnergyApi {
-  const bleManager = useMemo(() => new BleManager(), []);
-
+  // const bleManager = useMemo(() => new BleManager(), []);
   const [allDevices, setAllDevices] = useState<Device[]>([]);
 
   const requestAndroid31Permissions = async () => {

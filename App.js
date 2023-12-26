@@ -1,11 +1,12 @@
+import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import useBLE from "./useBLE";
-import DeviceModal from "./PulseIndicator";
+// import DeviceModal from "./PulseIndicator";
 
 const App = () => {
   const { requestPermissions, scanForPeripherals } = useBLE();
-  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
 
   const scanForDevices = async () => {
@@ -27,16 +28,10 @@ const App = () => {
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
-      <TouchableOpacity onPress={openModal}>
-        <Text style={styles.ctaButtonText}>Connect</Text>
-      </TouchableOpacity>
+      <Button onPress={openModal} title="Button"/>
+        {/* <Text style={styles.ctaButtonText}>Connect</Text>
+      </TouchableOpacity> */}
       <StatusBar style="auto" />
-      <DeviceModal
-        closeModal={hideModal}
-        visible={isModalVisible}
-        // connectToPeripheral={connectToDevice}
-        // devices={allDevices}
-      />
     </View>
   );
 };
